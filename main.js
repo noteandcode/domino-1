@@ -71,13 +71,6 @@ document.addEventListener('DOMContentLoaded', function(e){
    var g2 = document.createElementNS('http://www.w3.org/2000/svg', 'g');
    g2.setAttribute('fill', 'black');
    g2.setAttribute('id', 'circle');
-
-
-
-
-
-
-
    for(var ii = 0; ii <= 31; ii++){
       var temp = document.createElementNS('http://www.w3.org/2000/svg', 'g');
       for(var i = 0; i <= 13; i++){
@@ -90,9 +83,5 @@ document.addEventListener('DOMContentLoaded', function(e){
       g2.appendChild(temp);
    }
    board.appendChild(g2);
-   
-   
-   
-   
    document.body.appendChild(board);
 });
