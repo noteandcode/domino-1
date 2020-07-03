@@ -1,2 +1,2 @@
 # domino
-Implementation of the Domino game with Javascript and PHP. The game is multiplayer and does not use a database.
+Implementação do jogo Dominó com Javascript e PHP. Trata-se de um jogo online, multiplayer e sem uso de  banco de dados.
