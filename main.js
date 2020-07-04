@@ -1,12 +1,10 @@
 document.addEventListener('DOMContentLoaded', function(e){
-   var radiusCircle = 3;
    var board = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
    board.setAttribute('version', '1.1');
    board.setAttribute('width', '300');
    board.setAttribute('height', '300');
    board.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
    board.setAttribute('id', 'board');
-   board.setAttribute('viewBox', '0 0 300 300');
    var g0 = document.createElementNS('http://www.w3.org/2000/svg', 'g');
    g0.setAttribute('stroke', 'black');
    g0.setAttribute('stroke-width', '1');
@@ -46,12 +44,14 @@ document.addEventListener('DOMContentLoaded', function(e){
                   [[245,127],[245,136],[245,145],[245,155],[245,164],[245,173],[265,127],[265,136],[265,145],[265,155],[265,164],[265,173],[255,136],[255,164]],
                   [[245,187],[245,196],[245,205],[245,215],[245,224],[245,233],[265,187],[265,196],[265,205],[265,215],[265,224],[265,233],[255,196],[255,224]]];;
    var lines = [[35,150,55,150],[5,120,25,120],[35,90,55,90],[5,60,25,60],[30,5,30,25],[60,35,60,55],[90,5,90,25],[120,35,120,55],[150,5,150,25],[180,35,180,55],[210,5,210,25],[240,35,240,55],[270,5,270,25],[275,60,295,60],[245,90,265,90],[275,120,295,120],[245,150,265,150],[275,180,295,180],[245,210,265,210],[275,240,295,240],[270,275,270,295],[240,245,240,265],[210,275,210,295],[180,245,180,265],[150,275,150,295],[120,245,120,265],[90,275,90,295],[60,245,60,265],[30,275,30,295],[5,240,25,240],[35,210,55,210],[5,180,25,180]];
+   var selects = [[102,131],[119,131],[136,131],[164,131],[181,131],[198,131],[102,169],[119,169],[136,169],[164,169],[181,169],[198,169],[119,150],[181,150]];
    for(var i = 0; i <= 31; i++){
 	   var temp = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
 	   temp.setAttribute('x', rects[i][0]);
        temp.setAttribute('y', rects[i][1]);
        temp.setAttribute('width', rects[i][2]);
        temp.setAttribute('height', rects[i][3]);
+       temp.setAttribute('rx', '4');
        g0.appendChild(temp);
    }
    board.appendChild(g0);
@@ -83,5 +83,34 @@ document.addEventListener('DOMContentLoaded', function(e){
       g2.appendChild(temp);
    }
    board.appendChild(g2);
+   var g3 = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+   g3.setAttribute('fill', 'white');
+   g3.setAttribute('stroke', 'black');
+   g3.setAttribute('stroke-width', '1');
+   var tmp = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+   tmp.setAttribute('x', '90');
+   tmp.setAttribute('y', '120');
+   tmp.setAttribute('width', '120');
+   tmp.setAttribute('height', '60');
+   tmp.setAttribute('rx', '4');
+   g3.appendChild(tmp);
+   tmp = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+   tmp.setAttribute('x1', '150');
+   tmp.setAttribute('y1', '130');
+   tmp.setAttribute('x2', '150');
+   tmp.setAttribute('y2', '170');
+   g3.appendChild(tmp);
+   board.appendChild(g3);
+   
+   var g4 = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+   g4.setAttribute('fill', 'black');
+   for(var i = 0; i <= 13; i++){
+      var tmp = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      tmp.setAttribute('cx', selects[i][0]);
+      tmp.setAttribute('cy', selects[i][1]);
+      tmp.setAttribute('r', '6');
+      g4.appendChild(tmp);
+   }
+   board.appendChild(g4);
    document.body.appendChild(board);
 });
