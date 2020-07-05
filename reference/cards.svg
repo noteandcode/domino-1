@@ -1,0 +1,37 @@
+<svg version="1.1" width="300" height="230" xmlns="http://www.w3.org/2000/svg" id="board">
+   <g stroke="black" stroke-width="1" fill="white" id="rect">
+      <rect x="6.66" y="1" width="30" height="60" rx="4"/>
+      <rect x="43.32" y="1" width="30" height="60" rx="4"/>
+      <rect x="79.98" y="1" width="30" height="60" rx="4"/>
+      <rect x="116.64" y="1" width="30" height="60" rx="4"/>
+      <rect x="153.3" y="1" width="30" height="60" rx="4"/>
+      <rect x="189.96" y="1" width="30" height="60" rx="4"/>
+      <rect x="226.62" y="1" width="30" height="60" rx="4"/>
+      <rect x="263.28" y="1" width="30" height="60" rx="4"/>
+      <rect x="6.66" y="66" width="30" height="60" rx="4"/>
+      <rect x="43.32" y="66" width="30" height="60" rx="4"/>
+      <rect x="79.98" y="66" width="30" height="60" rx="4"/>
+      <rect x="116.64" y="66" width="30" height="60" rx="4"/>
+      <rect x="153.3" y="66" width="30" height="60" rx="4"/>
+      <rect x="189.96" y="66" width="30" height="60" rx="4"/>
+      <rect x="226.62" y="66" width="30" height="60" rx="4"/>
+      <rect x="263.28" y="66" width="30" height="60" rx="4"/>
+      <rect x="6.66" y="131" width="30" height="60" rx="4"/>
+      <rect x="43.32" y="131" width="30" height="60" rx="4"/>
+      <rect x="79.98" y="131" width="30" height="60" rx="4"/>
+      <rect x="116.64" y="131" width="30" height="60" rx="4"/>
+      <rect x="153.3" y="131" width="30" height="60" rx="4"/>
+      <rect x="189.96" y="131" width="30" height="60" rx="4"/>
+   </g>
+   <g stroke="black">
+      <line x1="11.6" y1="30.8" x2="31.6" y2="30.8"/>
+      <line x1="48.32" y1="30.8" x2="68.32" y2="30.8"/>
+      <line x1="84.98" y1="30.8" x2="104.98" y2="30.8"/>
+      <line x1="121.64" y1="30.8" x2="141.64" y2="30.8"/>
+      <line x1="158.3" y1="30.8" x2="178.3" y2="30.8"/>
+      <line x1="194.96" y1="30.8" x2="214.96" y2="30.8"/>
+      <line x1="231.62" y1="30.8" x2="251.62" y2="30.8"/>
+      <line x1="268.28" y1="30.8" x2="288.28" y2="30.8"/>
+   </g>
+   <text x="228" y="180" font-size="50" fill="red" id="timer">35</text>
+</svg>
