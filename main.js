@@ -113,4 +113,108 @@ document.addEventListener('DOMContentLoaded', function(e){
    }
    board.appendChild(g4);
    document.body.appendChild(board);
+
+   var pieces = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+   pieces.setAttribute('version', '1.1');
+   pieces.setAttribute('width', '300');
+   pieces.setAttribute('height', '200');
+   pieces.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+   pieces.setAttribute('id', 'pieces');
+   var g0 = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+   g0.setAttribute('stroke', 'black');
+   g0.setAttribute('stroke-width', '1');
+   g0.setAttribute('fill', 'white');
+   g0.setAttribute('id', 'rct');
+   var rct = [6.66,1];
+   var icx = 36.66;
+   var icy = 65;
+   for(var ii = 0; ii < 3; ii++){
+      for(var i = 0; i < 8; i++){
+         if(ii == 2 && i > 5){
+            break;
+         }
+         var temp = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+         temp.setAttribute('x', (rct[0] + icx * i).toFixed(2));
+         temp.setAttribute('y', (rct[1] + icy * ii).toFixed(2));
+         temp.setAttribute('width', '30');
+         temp.setAttribute('height', '60');
+         temp.setAttribute('rx', '4');
+         g0.appendChild(temp);
+      }
+   }
+   pieces.appendChild(g0);
+   var g1 = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+   g1.setAttribute('stroke', 'black');
+   g1.setAttribute('id', 'ln');
+   var ln = [11.6,30.8];
+   icx = 36.66;
+   icy = 65;
+   for(var ii = 0; ii < 3; ii++){
+      for(var i = 0; i < 8; i++){
+         if(ii == 2 && i > 5){
+            break;
+         }
+         temp = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+         temp.setAttribute('x1', (ln[0] + icx * i).toFixed(2));
+         temp.setAttribute('y1', (ln[1] + icy * ii).toFixed(2));
+         temp.setAttribute('x2', (ln[0] + 20 + icx * i).toFixed(2));
+         temp.setAttribute('y2', (ln[1] + icy * ii).toFixed(2));
+         g1.appendChild(temp);
+      }
+   }
+   pieces.appendChild(g1);
+   var g2 = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+   g0.setAttribute('fill', 'white');
+   g0.setAttribute('id', 'crcl');
+   var crcl = [[11.66,7],[11.66,16],[11.66,25],[11.66,36.5],[11.66,45.5],[11.66,54.5],[31.66,7],[31.66,16],[31.66,25],[31.66,36.5],[31.66,45.5],[31.66,54.5],[21.66,16],[21.66,45.5]];
+   icx = 36.66;
+   icy = 65;
+   for(var iii = 0; iii < 3; iii++){
+      for(var ii = 0; ii < 8; ii++){
+         if(iii == 2 && ii > 5){
+            break;
+         }
+         var tp = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+         for(var i = 0; i < 14; i++){
+            var temp = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+            temp.setAttribute('cx', (crcl[i][0] + icx * ii).toFixed(2));
+            temp.setAttribute('cy', (crcl[i][1] + icy * iii).toFixed(2));
+            temp.setAttribute('r', '3');
+            tp.appendChild(temp);
+            g2.appendChild(tp);
+         }
+      }
+   }
+   pieces.appendChild(g2);
+   var timer = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+   timer.setAttribute('x', '228');
+   timer.setAttribute('y', '180');
+   timer.setAttribute('font-size', '50');
+   timer.setAttribute('fill', 'red');
+   timer.setAttribute('id', 'timer');
+   timer.innerHTML = '35';
+   pieces.appendChild(timer);
+   document.body.appendChild(pieces);
 });
+
+
+
+
+
+//var temp = '';
+//var gg = [[11.66,7],[11.66,16],[11.66,25],[11.66,36.5],[11.66,45.5],[11.66,54.5],[31.66,7],[31.66,16],[31.66,25],[31.66,36.5],[31.66,45.5],[31.66,54.5],[21.66,16],[21.66,45.5]];
+//var icx = 36.66;
+//var icy = 65;
+//for(var iii = 0; iii < 3; iii++){
+//   for(var ii = 0; ii < 8; ii++){
+//      temp += '<g>\n';
+//      if(iii == 2 && ii > 5){
+//         break;
+//      }
+//      for(var i = 0; i < 14; i++){
+//         temp += '   <circle cx="' + (gg[i][0] + icx * ii).toFixed(2) + '" cy="' + (gg[i][1] + icy * iii).toFixed(2) + '" r="3"/>\n';
+//      }
+//      temp += '</g>\n';
+//   }
+//}
+//console.log(temp);
