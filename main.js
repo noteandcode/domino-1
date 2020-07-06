@@ -1,4 +1,28 @@
 document.addEventListener('DOMContentLoaded', function(e){
+   var info = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+   info.setAttribute('version', '1.1');
+   info.setAttribute('viewBox', '0 0 300 25');
+   info.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+   info.setAttribute('id', 'info');
+   var g0 = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+   g0.setAttribute('font-size', '10');
+   var txt = ['Eu - Peças/Passes','Adver. - Peças/Passes','6','6','/','/','0','0'];
+   var position = [[8,10],[8,22],[155,10],[155,22],[175,10],[175,22],[185,10],[185,22]];
+   for(var i = 0; i < 8; i++){
+      var tmp = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+      tmp.setAttribute('x', position[i][0]);
+      tmp.setAttribute('y', position[i][1]);
+      tmp.innerHTML = txt[i];
+      g0.appendChild(tmp);
+   }
+   tmp = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+   tmp.setAttribute('x', 240);
+   tmp.setAttribute('y', 22);
+   tmp.setAttribute('font-size', '25');
+   tmp.innerHTML = '35';
+   g0.appendChild(tmp);
+   info.appendChild(g0);
+   document.body.appendChild(info);
    var board = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
    board.setAttribute('version', '1.1');
    board.setAttribute('viewBox', '0 0 300 300');

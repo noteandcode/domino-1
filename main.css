@@ -13,6 +13,11 @@ html, body{
    display:block;
    margin:auto;
 }
+#info{
+   height:4.8vh;
+   display:block;
+   margin:auto;
+}
 text{
    fill:white;
    font-family:'Courier New';
