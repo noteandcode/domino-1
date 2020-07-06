@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function(e){
    var g0 = document.createElementNS('http://www.w3.org/2000/svg', 'g');
    g0.setAttribute('font-size', '10');
    var txt = ['Eu - Peças/Passes','Adver. - Peças/Passes','6','6','/','/','0','0'];
-   var position = [[8,10],[8,22],[155,10],[155,22],[175,10],[175,22],[185,10],[185,22]];
+   var position = [[8,10],[8,22],[155,10],[155,22],[175,10],[175,22],[190,10],[190,22]];
    for(var i = 0; i < 8; i++){
       var tmp = document.createElementNS('http://www.w3.org/2000/svg', 'text');
       tmp.setAttribute('x', position[i][0]);
@@ -217,3 +217,4 @@ document.addEventListener('DOMContentLoaded', function(e){
    pieces.appendChild(timer);
    document.body.appendChild(pieces);
 });
+
