@@ -2,3 +2,13 @@ html, body{
    margin:0;
    padding:0;
 }
+#board{
+   height:58vh;
+   display:block;
+   margin:auto;
+}
+#pieces{
+   height:37vh;
+   display:block;
+   margin:auto;
+}
