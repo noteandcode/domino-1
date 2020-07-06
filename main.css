@@ -1,6 +1,7 @@
 html, body{
    margin:0;
    padding:0;
+   background:#088A29;
 }
 #board{
    height:58vh;
@@ -11,4 +12,8 @@ html, body{
    height:37vh;
    display:block;
    margin:auto;
+}
+text{
+   fill:white;
+   font-family:'Courier New';
 }

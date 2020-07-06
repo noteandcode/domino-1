@@ -1,8 +1,7 @@
 document.addEventListener('DOMContentLoaded', function(e){
    var board = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
    board.setAttribute('version', '1.1');
-   board.setAttribute('width', '300');
-   board.setAttribute('height', '300');
+   board.setAttribute('viewBox', '0 0 300 300');
    board.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
    board.setAttribute('id', 'board');
    var g0 = document.createElementNS('http://www.w3.org/2000/svg', 'g');
@@ -116,8 +115,7 @@ document.addEventListener('DOMContentLoaded', function(e){
 
    var pieces = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
    pieces.setAttribute('version', '1.1');
-   pieces.setAttribute('width', '300');
-   pieces.setAttribute('height', '200');
+   pieces.setAttribute('viewBox', '0 0 300 192');
    pieces.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
    pieces.setAttribute('id', 'pieces');
    var g0 = document.createElementNS('http://www.w3.org/2000/svg', 'g');
@@ -190,31 +188,8 @@ document.addEventListener('DOMContentLoaded', function(e){
    timer.setAttribute('x', '228');
    timer.setAttribute('y', '180');
    timer.setAttribute('font-size', '50');
-   timer.setAttribute('fill', 'red');
    timer.setAttribute('id', 'timer');
    timer.innerHTML = '35';
    pieces.appendChild(timer);
    document.body.appendChild(pieces);
 });
-
-
-
-
-
-//var temp = '';
-//var gg = [[11.66,7],[11.66,16],[11.66,25],[11.66,36.5],[11.66,45.5],[11.66,54.5],[31.66,7],[31.66,16],[31.66,25],[31.66,36.5],[31.66,45.5],[31.66,54.5],[21.66,16],[21.66,45.5]];
-//var icx = 36.66;
-//var icy = 65;
-//for(var iii = 0; iii < 3; iii++){
-//   for(var ii = 0; ii < 8; ii++){
-//      temp += '<g>\n';
-//      if(iii == 2 && ii > 5){
-//         break;
-//      }
-//      for(var i = 0; i < 14; i++){
-//         temp += '   <circle cx="' + (gg[i][0] + icx * ii).toFixed(2) + '" cy="' + (gg[i][1] + icy * iii).toFixed(2) + '" r="3"/>\n';
-//      }
-//      temp += '</g>\n';
-//   }
-//}
-//console.log(temp);

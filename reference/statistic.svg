@@ -1,0 +1,13 @@
+<svg version="1.1" width="300" height="25" xmlns="http://www.w3.org/2000/svg" id="info">
+   <g font-size="10">
+      <text x="8" y="10">Eu - Peças/Passes</text>
+      <text x="8" y="22">Adversário- Peças/Passes</text>
+      <text x="155" y="10">6</text>
+      <text x="155" y="22">6</text>
+      <text x="175" y="10">/</text>
+      <text x="175" y="22">/</text>
+      <text x="185" y="10">0</text>
+      <text x="185" y="22">0</text>
+   </g>
+   <text x="240" y="22" font-size="25">10</text>
+</svg>
