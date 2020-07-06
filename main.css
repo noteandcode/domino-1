@@ -22,3 +22,6 @@ text{
    fill:white;
    font-family:'Courier New';
 }
+rect, text, line, circle{
+   visibility:hidden;
+}
