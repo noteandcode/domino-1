@@ -1,3 +1,6 @@
+/**
+ * Cria dinamicamente todo o tabuleiro, o qual ficará oculto pelo CSS. Esta função é chamada somente 1 vez ao disparar o evento DOMContenLoaded
+ */
 document.addEventListener('DOMContentLoaded', function(e){
    var info = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
    info.setAttribute('version', '1.1');
@@ -223,6 +226,14 @@ var sideB = []; // contagem começa na peça 31 - decrescente
 var firstPiece = [];
 var myPieces = [[6,6],[5,6],[2,3],[1,3],[3,4],[4,5]];
 var mapCircles = [[[],[13],[3,7],[3,7,13],[1,3,7,9],[1,3,7,9,13],[1,2,3,7,8,9]],[[],[14],[6,10],[6,10,14],[4,6,10,12],[4,6,10,12,14],[4,5,6,10,11,12]]];
+/**
+ * Adiciona os dados de uma peça de dominó na estrutura de dados que representa o tabuleiro. Uma chamada desta função representa a execução de uma jogada
+ * 
+ * @example 
+ *   addPieceToBoard(1);
+ * 
+ * @param   {Number} id    Id da peça na mão do jogador. As peças são representadas pelo array myPieces
+ */
 function addPieceToBoard(id){
    if(firstPiece.length == 0){
       firstPiece.push(Math.min(myPieces[id][0], myPieces[id][1]));
@@ -235,6 +246,43 @@ function addPieceToBoard(id){
       }
    }
 }
+/**
+ * Verifica se a peça, cujos pontos são passados em v1 e v2, formam uma jogada do tipo 'lá e ló'. Retorna true em caso positivo e false caso contrário
+ * 
+ * @example 
+ *   isTwoSides(3, 5);
+ * 
+ * @param   {Number} V1    Quantidade de pontos do primeiro lado
+ * @param   {Number} V2    Quantidade de pontos do segundo lado
+ * @returns {boolean}
+ */
+function isTwoSides(v1, v2){
+   var heads;
+   if(typeof sideA[sideA.length - 1] === "undefined"){
+      heads.push(firstPiece[0]);
+   }else{
+      heads.push(sideA[sideA.length - 1][0]);
+   }
+   if(typeof sideB[sideB.length - 1] === "undefined"){
+      heads.push(firstPiece[1]);
+   }else{        
+      heads.push(sideB[sideB.length - 1][0]);
+   }
+   if(heads.includes(v1) && heads.includes(v2)){
+      return true;
+   }
+   return false;
+}
+/**
+ * Exibe uma peça de dominó, cujos pontos são especificados em v1 e v2, em uma posição específica do tabuleiro, a qual é definida com o id
+ * 
+ * @example 
+ *   drawPiece(0, 3, 5);
+ * 
+ * @param   {Number} id    Id da peça no tabuleiro, o qual varia entre 0 - 31
+ * @param   {Number} V1    Quantidade de pontos do primeiro lado
+ * @param   {Number} V2    Quantidade de pontos do segundo lado
+ */
 function drawPiece(id, v1, v2){
    var board = document.getElementById('board').children;
    var rect = board[0].children;
@@ -246,11 +294,9 @@ function drawPiece(id, v1, v2){
    for(var i = 1; i < 15; i++){
       if(mapCircles[0][v1].includes(i)){
          circle[i - 1].style.visibility = 'visible';
-         console.log(id + ' -> ' + i);
       }
       if(mapCircles[1][v2].includes(i)){
          circle[i - 1].style.visibility = 'visible';
-         console.log(id + ' -> ' + i);
       }
    }
 }
