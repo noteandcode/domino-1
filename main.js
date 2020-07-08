@@ -226,6 +226,7 @@ var sideB = []; // contagem começa na peça 31 - decrescente
 var firstPiece = [];
 var myPieces = [[6,6],[5,6],[2,3],[1,3],[3,4],[4,5]];
 var mapCircles = [[[],[13],[3,7],[3,7,13],[1,3,7,9],[1,3,7,9,13],[1,2,3,7,8,9]],[[],[14],[6,10],[6,10,14],[4,6,10,12],[4,6,10,12,14],[4,5,6,10,11,12]]];
+var heads = [];
 /**
  * Adiciona os dados de uma peça de dominó na estrutura de dados que representa o tabuleiro. Uma chamada desta função representa a execução de uma jogada
  * 
@@ -241,9 +242,35 @@ function addPieceToBoard(id){
       drawPiece(0, firstPiece[0], firstPiece[1]);
       countPieces++;
    }else{
-      if(1){
+      if(isTwoSides(myPieces[id][0], myPieces[id][1])){
+         var board = document.getElementById('board').children;
+         board[3].style.visibility = 'visible';
+      }else{
          
       }
+   }
+   updateHeads();
+}
+/**
+ * Atualiza os pontos de cada 'cabeça' do jogo. Será chamada sempre após uma nova jogada. A informação fica salva no array heads
+ * 
+ * @example 
+ *   updateHeads();
+ * 
+ * @param   {Number} V1    Quantidade de pontos do primeiro lado
+ * @param   {Number} V2    Quantidade de pontos do segundo lado
+ * @returns {boolean}
+ */
+function updateHeads(){
+   if(typeof sideA[sideA.length - 1] === "undefined"){
+      heads[0] = firstPiece[0];
+   }else{
+      heads[0] = sideA[sideA.length - 1][0];
+   }
+   if(typeof sideB[sideB.length - 1] === "undefined"){
+      heads[1] = firstPiece[1];
+   }else{
+      heads[1] = sideB[sideB.length - 1][0];
    }
 }
 /**
@@ -257,17 +284,6 @@ function addPieceToBoard(id){
  * @returns {boolean}
  */
 function isTwoSides(v1, v2){
-   var heads;
-   if(typeof sideA[sideA.length - 1] === "undefined"){
-      heads.push(firstPiece[0]);
-   }else{
-      heads.push(sideA[sideA.length - 1][0]);
-   }
-   if(typeof sideB[sideB.length - 1] === "undefined"){
-      heads.push(firstPiece[1]);
-   }else{        
-      heads.push(sideB[sideB.length - 1][0]);
-   }
    if(heads.includes(v1) && heads.includes(v2)){
       return true;
    }
