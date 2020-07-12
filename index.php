@@ -1,5 +1,5 @@
 <?php
-   $data = 'data.txt';
+   $data = 'server/data.txt';
    clearstatcache();
    if(!file_exists($data)){
       file_put_contents($data, '', FILE_APPEND);
