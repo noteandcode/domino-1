@@ -220,13 +220,17 @@ document.addEventListener('DOMContentLoaded', function(e){
    pieces.appendChild(timer);
    document.body.appendChild(pieces);
 });
-var countPieces = 0;
+var countPieces = 0; // contador das peças jogadas
 var sideA = []; // contagem começa na peça 1 - crescente
 var sideB = []; // contagem começa na peça 31 - decrescente
-var firstPiece = [];
-var myPieces = [[6,6],[5,6],[2,3],[1,3],[3,4],[4,5]];
-var mapCircles = [[[],[13],[3,7],[3,7,13],[1,3,7,9],[1,3,7,9,13],[1,2,3,7,8,9]],[[],[14],[6,10],[6,10,14],[4,6,10,12],[4,6,10,12,14],[4,5,6,10,11,12]]];
-var heads = [];
+var firstPiece = []; // dados da primeira peça jogada
+var myPieces = [[0,6],[0,1],[1,2],[2,3],[3,4],[4,5],[5,5]]; // minhas peças
+var mapCircles = [[[],[13],[3,7],[3,7,13],[1,3,7,9],[1,3,7,9,13],[1,2,3,7,8,9]],[[],[14],[6,10],[6,10,14],[4,6,10,12],[4,6,10,12,14],[4,5,6,10,11,12]]]; // representa o índice de cada ponto de todas as peças
+var heads = [0, 0];
+var directionH0P0 = [1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1];
+var directionH0P1 = [0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0];
+var directionH1P0 = [0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0];
+var directionH1P1 = [1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1];
 /**
  * Adiciona os dados de uma peça de dominó na estrutura de dados que representa o tabuleiro. Uma chamada desta função representa a execução de uma jogada
  * 
@@ -240,15 +244,32 @@ function addPieceToBoard(id){
       firstPiece.push(Math.min(myPieces[id][0], myPieces[id][1]));
       firstPiece.push(Math.max(myPieces[id][0], myPieces[id][1]));
       drawPiece(0, firstPiece[0], firstPiece[1]);
-      countPieces++;
    }else{
       if(isTwoSides(myPieces[id][0], myPieces[id][1])){
          var board = document.getElementById('board').children;
          board[3].style.visibility = 'visible';
+         var sel = board[4].children;
       }else{
-         
+         if(heads[0] === myPieces[id][0]){
+            //drawPiece(sideA.length + 1, myPieces[id][0], myPieces[id][1]);
+            drawPiece(sideA.length + 1, myPieces[id][directionH0P0[sideA.length]], myPieces[id][Math.abs(directionH0P0[sideA.length] - 1)]);
+            sideA.push([myPieces[id][1], countPieces]);
+         }else if(heads[0] === myPieces[id][1]){
+            //drawPiece(sideA.length + 1, myPieces[id][0], myPieces[id][1]);
+            drawPiece(sideA.length + 1, myPieces[id][directionH0P1[sideA.length]], myPieces[id][Math.abs(directionH0P1[sideA.length] - 1)]);
+            sideA.push([myPieces[id][0], countPieces]);
+         }else if(heads[1] === myPieces[id][0]){
+            //drawPiece(31 - sideB.length, myPieces[id][0], myPieces[id][1]);
+            drawPiece(31 - sideB.length, myPieces[id][directionH1P0[sideB.length]], myPieces[id][Math.abs(directionH1P0[sideB.length] - 1)]);
+            sideB.push([myPieces[id][1], countPieces]);
+         }else if(heads[1] === myPieces[id][1]){
+            drawPiece(31 - sideB.length, myPieces[id][1], myPieces[id][0]);
+            drawPiece(31 - sideB.length, myPieces[id][directionH1P1[sideB.length]], myPieces[id][Math.abs(directionH1P1[sideB.length] - 1)]);
+            sideB.push([myPieces[id][0], countPieces]);
+         }
       }
    }
+   countPieces++;
    updateHeads();
 }
 /**
