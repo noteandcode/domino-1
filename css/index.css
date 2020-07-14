@@ -1,12 +1,53 @@
 html, body{
-
+   margin:0;
+   padding:0;
+   text-align:center;
+   font-family:Helvetica;
 }
 header{
-
+   width:100vw;
+   height:40vh;
+   padding-top:30px;
+   box-sizing:border-box;
 }
 footer{
-
+   width:100vw;
+   height:10vh;
+   cursor:pointer;
 }
-.boards{
-
+#logo{
+   height:50%;
+}
+#board{
+   color:#757575;
+   width:100vw;
+   height:49vh;
+   padding-top:30px;
+   box-sizing:border-box;
+}
+#link{
+   width:80vw;
+   height:20px;
+   border-radius:3px;
+   color:#757575;
+   border:1px solid gray;
+}
+#clipboard{
+   display:inline;
+   height:25px;
+   vertical-align:top;
+   cursor:pointer;
+}
+.f{
+   font-size:15px;
+}
+.g{
+   font-size:25px;
+   color:black;
+   font-weight:bold;
+}
+.git{
+   display:inline;
+   height:30px;
+   vertical-align:top;
 }

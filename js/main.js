@@ -2,6 +2,10 @@
  * Cria dinamicamente todo o tabuleiro, o qual ficará oculto pelo CSS. Esta função é chamada somente 1 vez ao disparar o evento DOMContenLoaded
  */
 document.addEventListener('DOMContentLoaded', function(e){
+   var url = window.location.href.split('?');
+   if(url.length == 2){
+      document.cookie = 'PHPSESSID=' + url[1] + ';path=/';
+   }
    var info = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
    info.setAttribute('version', '1.1');
    info.setAttribute('viewBox', '0 0 300 25');
