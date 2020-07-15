@@ -23,13 +23,13 @@ document.addEventListener('DOMContentLoaded', function(e){
       tmp.innerHTML = txt[i];
       g0.appendChild(tmp);
    }
-   tmp = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+   var tmp = document.createElementNS('http://www.w3.org/2000/svg', 'text');
    tmp.setAttribute('x', 240);
    tmp.setAttribute('y', 22);
    tmp.setAttribute('font-size', '25');
    tmp.innerHTML = '35';
-   g0.appendChild(tmp);
    info.appendChild(g0);
+   info.appendChild(tmp);
    document.body.appendChild(info);
    var board = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
    board.setAttribute('version', '1.1');
@@ -333,4 +333,20 @@ function drawPiece(id, v1, v2, container){
       }
    }
 }
-function 
+/**
+ * Exibe um temporizador de 30 segundos na tela.
+ * 
+ * @example 
+ *   showTimer(0);
+ * 
+ * @param   {Number} id  Define o temporizador que seráexibido. Pode ser 0 (temporizador do usuário) ou 1 (temporizador do adversário)
+ */
+function showTimer(id){
+   if(id === 0){
+      var wrap = document.getElementById('pieces').children;
+      wrap[3].style.visibility = 'visible';
+   }else if(id === 1){
+      var wrap = document.getElementById('info').children;
+      wrap[1].style.visibility = 'visible';
+   }
+}
