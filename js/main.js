@@ -218,6 +218,7 @@ document.addEventListener('DOMContentLoaded', function(e){
    pieces.appendChild(timer);
    document.body.appendChild(pieces);
 });
+var timer = null; // temporizadores
 var countPieces = 0; // contador das peças jogadas
 var countPiecesOnHand = 0; // contador das peças na mão
 var sideA = []; // contagem começa na peça 1 - crescente
@@ -334,7 +335,7 @@ function drawPiece(id, v1, v2, container){
    }
 }
 /**
- * Exibe um temporizador de 30 segundos na tela.
+ * Exibe um temporizador de 30 segundos na tela
  * 
  * @example 
  *   showTimer(0);
@@ -351,7 +352,7 @@ function showTimer(id){
    }
 }
 /**
- * Oculta um temporizador na tela.
+ * Oculta um temporizador na tela
  * 
  * @example 
  *   hideTimer(0);
@@ -367,4 +368,30 @@ function hideTimer(id){
       wrap[1].style.visibility = 'hidden';
    }
 }
-
+/**
+ * Inicia o contador do timer
+ * 
+ * @example 
+ *   hideTimer(0);
+ * 
+ * @param   {Number} id  Define o temporizador que será iniciado. Pode ser 0 (temporizador do usuário) ou 1 (temporizador do adversário)
+ */
+function startTimer(id){
+   var index = 0, wrap = null;
+   if(id === 0){
+      wrap = document.getElementById('pieces').children;
+      index = 3;
+   }else if(id === 1){
+      wrap = document.getElementById('info').children;
+      index = 1;
+   }
+   var count = 30;
+   timer = setInterval(function(){
+      wrap[index].innerHTML = count;
+      count--;
+      if(count === -2){
+         clearInterval(timer);
+         hideTimer(id);
+      }
+   }, 1000);
+}
