@@ -40,7 +40,6 @@ document.addEventListener('DOMContentLoaded', function(e){
    g0.setAttribute('stroke', 'black');
    g0.setAttribute('stroke-width', '1');
    g0.setAttribute('fill', 'white');
-   g0.setAttribute('id', 'rect');
    var rects = [[30,120,30,60],[0,90,30,60],[30,60,30,60],[0,30,30,60],[0,0,60,30],[30,30,60,30],[60,0,60,30],[90,30,60,30],[120,0,60,30],[150,30,60,30],[180,0,60,30],[210,30,60,30],[240,0,60,30],[270,30,30,60],[240,60,30,60],[270,90,30,60],[240,120,30,60],[270,150,30,60],[240,180,30,60],[270,210,30,60],[240,270,60,30],[210,240,60,30],[180,270,60,30],[150,240,60,30],[120,270,60,30],[90,240,60,30],[60,270,60,30],[30,240,60,30],[0,270,60,30],[0,210,30,60],[30,180,30,60],[0,150,30,60]];
    var circles = [[[55,127],[55,136],[55,145],[55,155],[55,164],[55,173],[35,127],[35,136],[35,145],[35,155],[35,164],[35,173],[45,136],[45,164]], // 0
                   [[5,97],[5,106],[5,115],[5,125],[5,134],[5,143],[25,97],[25,106],[25,115],[25,125],[25,134],[25,143],[15,106],[15,134]], // 1
@@ -89,7 +88,6 @@ document.addEventListener('DOMContentLoaded', function(e){
    var g1 = document.createElementNS('http://www.w3.org/2000/svg', 'g');
    g1.setAttribute('stroke', 'black');
    g1.setAttribute('stroke-width', '1');
-   g1.setAttribute('id', 'line');
    for(var i = 0; i <= 31; i++){
        var temp = document.createElementNS('http://www.w3.org/2000/svg', 'line');
        temp.setAttribute('x1', lines[i][0]);
@@ -101,7 +99,6 @@ document.addEventListener('DOMContentLoaded', function(e){
    board.appendChild(g1);
    var g2 = document.createElementNS('http://www.w3.org/2000/svg', 'g');
    g2.setAttribute('fill', 'black');
-   g2.setAttribute('id', 'circle');
    for(var ii = 0; ii <= 31; ii++){
       var temp = document.createElementNS('http://www.w3.org/2000/svg', 'g');
       for(var i = 0; i <= 13; i++){
@@ -154,7 +151,6 @@ document.addEventListener('DOMContentLoaded', function(e){
    g0.setAttribute('stroke', 'black');
    g0.setAttribute('stroke-width', '1');
    g0.setAttribute('fill', 'white');
-   g0.setAttribute('id', 'rct');
    var rct = [6.66,1];
    var icx = 36.66;
    var icy = 65;
@@ -175,7 +171,6 @@ document.addEventListener('DOMContentLoaded', function(e){
    pieces.appendChild(g0);
    var g1 = document.createElementNS('http://www.w3.org/2000/svg', 'g');
    g1.setAttribute('stroke', 'black');
-   g1.setAttribute('id', 'ln');
    var ln = [11.6,30.8];
    icx = 36.66;
    icy = 65;
@@ -195,7 +190,6 @@ document.addEventListener('DOMContentLoaded', function(e){
    pieces.appendChild(g1);
    var g2 = document.createElementNS('http://www.w3.org/2000/svg', 'g');
    g0.setAttribute('fill', 'white');
-   g0.setAttribute('id', 'crcl');
    var crcl = [[11.66,7],[11.66,16],[11.66,25],[11.66,36.5],[11.66,45.5],[11.66,54.5],[31.66,7],[31.66,16],[31.66,25],[31.66,36.5],[31.66,45.5],[31.66,54.5],[21.66,16],[21.66,45.5]];
    icx = 36.66;
    icy = 65;
@@ -220,7 +214,6 @@ document.addEventListener('DOMContentLoaded', function(e){
    timer.setAttribute('x', '228');
    timer.setAttribute('y', '180');
    timer.setAttribute('font-size', '50');
-   timer.setAttribute('id', 'timer');
    timer.innerHTML = '35';
    pieces.appendChild(timer);
    document.body.appendChild(pieces);
@@ -340,3 +333,4 @@ function drawPiece(id, v1, v2, container){
       }
    }
 }
+function 
