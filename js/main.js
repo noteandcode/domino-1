@@ -351,7 +351,7 @@ function showTimer(id){
    }
 }
 /**
- * Oculta um temporizador de 30 segundos na tela.
+ * Oculta um temporizador na tela.
  * 
  * @example 
  *   hideTimer(0);
