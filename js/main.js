@@ -372,7 +372,7 @@ function hideTimer(id){
  * Inicia o contador do timer
  * 
  * @example 
- *   hideTimer(0);
+ *   startTimer(0);
  * 
  * @param   {Number} id  Define o temporizador que será iniciado. Pode ser 0 (temporizador do usuário) ou 1 (temporizador do adversário)
  */
@@ -394,4 +394,16 @@ function startTimer(id){
          hideTimer(id);
       }
    }, 1000);
+}
+/**
+ * Encerra o contador do timer
+ * 
+ * @example 
+ *   stopTimer(0);
+ * 
+ * @param   {Number} id  Define o temporizador que será encerrado. Pode ser 0 (temporizador do usuário) ou 1 (temporizador do adversário)
+ */
+function stopTimer(id){
+   clearInterval(timer);
+   hideTimer(id);
 }
