@@ -339,7 +339,7 @@ function drawPiece(id, v1, v2, container){
  * @example 
  *   showTimer(0);
  * 
- * @param   {Number} id  Define o temporizador que seráexibido. Pode ser 0 (temporizador do usuário) ou 1 (temporizador do adversário)
+ * @param   {Number} id  Define o temporizador que será exibido. Pode ser 0 (temporizador do usuário) ou 1 (temporizador do adversário)
  */
 function showTimer(id){
    if(id === 0){
@@ -350,3 +350,21 @@ function showTimer(id){
       wrap[1].style.visibility = 'visible';
    }
 }
+/**
+ * Oculta um temporizador de 30 segundos na tela.
+ * 
+ * @example 
+ *   hideTimer(0);
+ * 
+ * @param   {Number} id  Define o temporizador que será ocultado. Pode ser 0 (temporizador do usuário) ou 1 (temporizador do adversário)
+ */
+function hideTimer(id){
+   if(id === 0){
+      var wrap = document.getElementById('pieces').children;
+      wrap[3].style.visibility = 'hidden';
+   }else if(id === 1){
+      var wrap = document.getElementById('info').children;
+      wrap[1].style.visibility = 'hidden';
+   }
+}
+
