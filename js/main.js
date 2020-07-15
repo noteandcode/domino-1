@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function(e){
    var url = window.location.href.split('?');
    if(url.length == 2){
       document.cookie = 'PHPSESSID=' + url[1] + ';path=/';
+      window.location.href = location.hostname + '/board.html';
    }
    var info = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
    info.setAttribute('version', '1.1');
@@ -225,6 +226,7 @@ document.addEventListener('DOMContentLoaded', function(e){
    document.body.appendChild(pieces);
 });
 var countPieces = 0; // contador das peças jogadas
+var countPiecesOnHand = 0; // contador das peças na mão
 var sideA = []; // contagem começa na peça 1 - crescente
 var sideB = []; // contagem começa na peça 31 - decrescente
 var firstPiece = []; // dados da primeira peça jogada
@@ -247,7 +249,7 @@ function addPieceToBoard(id){
    if(firstPiece.length == 0){
       firstPiece.push(Math.min(myPieces[id][0], myPieces[id][1]));
       firstPiece.push(Math.max(myPieces[id][0], myPieces[id][1]));
-      drawPiece(0, firstPiece[0], firstPiece[1]);
+      drawPiece(0, firstPiece[0], firstPiece[1], 'board');
    }else{
       if(isTwoSides(myPieces[id][0], myPieces[id][1])){
          var board = document.getElementById('board').children;
@@ -255,20 +257,16 @@ function addPieceToBoard(id){
          var sel = board[4].children;
       }else{
          if(heads[0] === myPieces[id][0]){
-            //drawPiece(sideA.length + 1, myPieces[id][0], myPieces[id][1]);
-            drawPiece(sideA.length + 1, myPieces[id][directionH0P0[sideA.length]], myPieces[id][Math.abs(directionH0P0[sideA.length] - 1)]);
+            drawPiece(sideA.length + 1, myPieces[id][directionH0P0[sideA.length]], myPieces[id][Math.abs(directionH0P0[sideA.length] - 1)], 'board');
             sideA.push([myPieces[id][1], countPieces]);
          }else if(heads[0] === myPieces[id][1]){
-            //drawPiece(sideA.length + 1, myPieces[id][0], myPieces[id][1]);
-            drawPiece(sideA.length + 1, myPieces[id][directionH0P1[sideA.length]], myPieces[id][Math.abs(directionH0P1[sideA.length] - 1)]);
+            drawPiece(sideA.length + 1, myPieces[id][directionH0P1[sideA.length]], myPieces[id][Math.abs(directionH0P1[sideA.length] - 1)], 'board');
             sideA.push([myPieces[id][0], countPieces]);
          }else if(heads[1] === myPieces[id][0]){
-            //drawPiece(31 - sideB.length, myPieces[id][0], myPieces[id][1]);
-            drawPiece(31 - sideB.length, myPieces[id][directionH1P0[sideB.length]], myPieces[id][Math.abs(directionH1P0[sideB.length] - 1)]);
+            drawPiece(31 - sideB.length, myPieces[id][directionH1P0[sideB.length]], myPieces[id][Math.abs(directionH1P0[sideB.length] - 1)], 'board');
             sideB.push([myPieces[id][1], countPieces]);
          }else if(heads[1] === myPieces[id][1]){
-            drawPiece(31 - sideB.length, myPieces[id][1], myPieces[id][0]);
-            drawPiece(31 - sideB.length, myPieces[id][directionH1P1[sideB.length]], myPieces[id][Math.abs(directionH1P1[sideB.length] - 1)]);
+            drawPiece(31 - sideB.length, myPieces[id][directionH1P1[sideB.length]], myPieces[id][Math.abs(directionH1P1[sideB.length] - 1)], 'board');
             sideB.push([myPieces[id][0], countPieces]);
          }
       }
@@ -315,22 +313,23 @@ function isTwoSides(v1, v2){
    return false;
 }
 /**
- * Exibe uma peça de dominó, cujos pontos são especificados em v1 e v2, em uma posição específica do tabuleiro, a qual é definida com o id
+ * Exibe uma peça de dominó no tabuleiro ou na mão do jogador
  * 
  * @example 
- *   drawPiece(0, 3, 5);
+ *   drawPiece(0, 3, 5, 'board');
  * 
- * @param   {Number} id    Id da peça no tabuleiro, o qual varia entre 0 - 31
- * @param   {Number} V1    Quantidade de pontos do primeiro lado
- * @param   {Number} V2    Quantidade de pontos do segundo lado
+ * @param   {Number} id           Índice da peça dentro do container que as possui
+ * @param   {Number} V1           Quantidade de pontos do primeiro lado
+ * @param   {Number} V2           Quantidade de pontos do segundo lado
+ * @param   {string} containerId  Conteiner que possui a peça a ser exibida. Basicamente no tabuleito (board) ouna mão do jogador (pieces)
  */
-function drawPiece(id, v1, v2){
-   var board = document.getElementById('board').children;
-   var rect = board[0].children;
+function drawPiece(id, v1, v2, container){
+   var wrap = document.getElementById(container).children;
+   var rect = wrap[0].children;
    rect[id].style.visibility = 'visible';
-   var line = board[1].children;
+   var line = wrap[1].children;
    line[id].style.visibility = 'visible';
-   var gcircle = document.getElementById('circle').children;
+   var gcircle = wrap[2].children;
    var circle = gcircle[id].children;
    for(var i = 1; i < 15; i++){
       if(mapCircles[0][v1].includes(i)){
