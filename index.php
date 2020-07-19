@@ -1,6 +1,7 @@
 <?php
    session_start();
    $_SESSION['registered'] = 'on';
+   $_SESSION['distribute'] = false;
 ?>
 <!DOCTYPE html>
 <html>
