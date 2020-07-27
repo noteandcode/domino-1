@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', function(e){
    var url = window.location.href.split('?');
    if(url.length == 2){
       document.cookie = 'PHPSESSID=' + url[1] + ';path=/';
+      myName = prompt('Escolha um nome de usuário', 'gamer');
+      register(myName);
       window.location.href = location.hostname + '/board.html';
    }
    var info = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
@@ -214,6 +216,7 @@ document.addEventListener('DOMContentLoaded', function(e){
    pieces.appendChild(timer);
    document.body.appendChild(pieces);
 });
+var myName = '';
 var timer = null; // temporizadores
 var countPieces = 0; // contador das peças jogadas
 var countPiecesOnHand = 0; // contador das peças na mão
@@ -402,4 +405,16 @@ function startTimer(id){
 function stopTimer(id){
    clearInterval(timer);
    hideTimer(id);
+}
+
+function register(name){
+   var xhr = new XMLHttpRequest();
+   xhr.onreadystatechange = function(){
+      if(this.readyState == 4 && this.status == 200){
+         return(this.responseText);
+      }
+   };
+   xhr.open('POST', 'server/api.php', true);
+   xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+   xhr.send('request={"name":"' + name + '"}');
 }
