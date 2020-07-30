@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function(e){
       document.cookie = 'PHPSESSID=' + url[1] + ';path=/';
       myName = prompt('Escolha um nome de usuário', 'gamer');
       register(myName);
-      window.location.href = location.hostname + '/board.html';
+      window.location.href = location.pathname;
    }
    var info = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
    info.setAttribute('version', '1.1');
