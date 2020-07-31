@@ -1,5 +1,6 @@
 <?php
    session_start();
+   header('Content-type: application/json');
    if(isset($_SESSION['registered'])){
       exit('Unrecognized session');
    }
@@ -7,7 +8,7 @@
       exit('Malformed request');
    }
    $request = json_decode($_POST['request']);
-   if(!isset($request['type'])){
+   if(!isset($request['type']) || !$request){
       exit('Malformed request');
    }
    switch($request['type']){
@@ -31,6 +32,8 @@
       case 'update':
          break;
       case 'play':
+         break;
+      case 'spectator':
          break;
       case 'quit':
          if(!isset($request['hash'])){
