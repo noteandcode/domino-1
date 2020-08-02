@@ -3,24 +3,24 @@
    $_SESSION['registered'] = 'on'; // indica que a sessão está registrada como jogo ativo
    $_SESSION['userCount'] = 0; // quantidade de jogadores online. O máximo é 2
    $_SESSION['timestamp'] = 0; // armazena um timestamp da última jogada para contagem de tempo
-   $_SESSION['board'] = array(); // [sideA, sideB, countPiece]
-   $_SESSION['user'] = array( // armazena dados dos usuários durante o jogo
-      array(
+   $_SESSION['board'] = []; // [sideA, sideB, countPiece]
+   $_SESSION['user'] = [ // armazena dados dos usuários durante o jogo
+      [
          'name' => '', // Nome fornecido no registro
          'hash' => '', // Hash MD5 gerado no registro e usado como identificador unico
-         'pieces' => array(), // Peças deste jogador
+         'pieces' => [], // Peças deste jogador
          'turn' => 0, // Indica que é a vez deste usuário jogar caso seja igual a 1
          'quit' => 0 // Se o valor for igual a 1 significa que o usuário desistiu do jogo
-      ),
-      array(
+      ],
+      [
          'name' => '',
          'hash' => '',
-         'pieces' => array(),
+         'pieces' => [],
          'turn' => 0,
          'quit' => 0
-      )
-   );
-   $_SESSION['heap'] = array([0,0],[0,1],[0,2],[0,3],[0,4],[0,5],[0,6],[1,1],[1,2],[1,3],[1,4],[1,5],[1,6],[2,2],[2,3],[2,4],[2,5],[2,6],[3,3],[3,4],[3,5],[3,6],[4,4],[4,5],[4,6],[5,5],[5,6],[6,6]); // todas as peças disponíveis no monte
+      ]
+   ];
+   $_SESSION['heap'] = [[0,0],[0,1],[0,2],[0,3],[0,4],[0,5],[0,6],[1,1],[1,2],[1,3],[1,4],[1,5],[1,6],[2,2],[2,3],[2,4],[2,5],[2,6],[3,3],[3,4],[3,5],[3,6],[4,4],[4,5],[4,6],[5,5],[5,6],[6,6]]; // todas as peças disponíveis no monte
 ?>
 <!DOCTYPE html>
 <html>
