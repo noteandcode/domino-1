@@ -1,21 +1,22 @@
 <?php
    session_start();
    header('Content-type: application/json');
+   require 'processing.php';
    if(!isset($_SESSION['registered'])){
       exit('Unrecognized session');
    }
    //print_r($_SESSION); exit();
    if(!isset($_POST['request'])){
-      exit('Malformed request');
+      exit('Malformed request: Incomplete request');
    }
    $request = json_decode($_POST['request']);
    if(!isset($request->type) || !$request){
-      exit('Malformed request');
+      exit('Malformed request: JSON error');
    }
    switch($request->type){
       case 'register':
-         if(!isset($request->name)){
-            exit('Malformed request');
+         if(!isset($request->name) || strlen($request->name) == 0){
+            $request->name = 'Gamer'.$_SESSION['userCount'];
          }
          if($_SESSION['userCount'] < 2){
             $amountPiece = 0;
@@ -41,7 +42,7 @@
          break;
       case 'quit':
          if(!isset($request->hash)){
-            exit('Malformed request');
+            exit('Malformed request: Hash not provided');
          }
          for($id = 0; $id < 2; $id++){
             if($_SESSION['user'][$id]['hash'] === $request->hash){
