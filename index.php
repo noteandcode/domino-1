@@ -6,11 +6,11 @@
    $_SESSION['board'] = array(); // [sideA, sideB, countPiece]
    $_SESSION['user'] = array( // armazena dados dos usuários durante o jogo
       array(
-         'name' => '',
-         'hash' => '',
-         'pieces' => array(),
-         'turn' => 0,
-         'quit' => 0
+         'name' => '', // Nome fornecido no registro
+         'hash' => '', // Hash MD5 gerado no registro e usado como identificador unico
+         'pieces' => array(), // Peças deste jogador
+         'turn' => 0, // Indica que é a vez deste usuário jogar caso seja igual a 1
+         'quit' => 0 // Se o valor for igual a 1 significa que o usuário desistiu do jogo
       ),
       array(
          'name' => '',

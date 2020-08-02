@@ -1,19 +1,20 @@
 <?php
    session_start();
    header('Content-type: application/json');
-   if(isset($_SESSION['registered'])){
+   if(!isset($_SESSION['registered'])){
       exit('Unrecognized session');
    }
+   //print_r($_SESSION); exit();
    if(!isset($_POST['request'])){
       exit('Malformed request');
    }
    $request = json_decode($_POST['request']);
-   if(!isset($request['type']) || !$request){
+   if(!isset($request->type) || !$request){
       exit('Malformed request');
    }
-   switch($request['type']){
-      case 'register': // testar esse case
-         if(!isset($request['name'])){
+   switch($request->type){
+      case 'register':
+         if(!isset($request->name)){
             exit('Malformed request');
          }
          if($_SESSION['userCount'] < 2){
@@ -23,7 +24,10 @@
                if($_SESSION['heap'][$idx] !== null){
                   $_SESSION['user'][$_SESSION['userCount']]['pieces'][$amountPiece][0] = $_SESSION['heap'][$idx][0];
                   $_SESSION['user'][$_SESSION['userCount']]['pieces'][$amountPiece][1] = $_SESSION['heap'][$idx][1];
-                  $amounPiece++;
+                  $_SESSION['heap'][$idx] = null;
+                  $_SESSION['user'][$_SESSION['userCount']]['name'] = $request->name;
+                  $_SESSION['user'][$_SESSION['userCount']]['hash'] = md5(rand(0, 10000).$request->name.rand(0, 10000));
+                  $amountPiece++;
                }
             }
             $_SESSION['userCount']++;
@@ -36,11 +40,11 @@
       case 'spectator':
          break;
       case 'quit':
-         if(!isset($request['hash'])){
+         if(!isset($request->hash)){
             exit('Malformed request');
          }
          for($id = 0; $id < 2; $id++){
-            if($_SESSION['user'][$id]['hash'] === $request['hash']){
+            if($_SESSION['user'][$id]['hash'] === $request->hash){
                $_SESSION['user'][$id]['quit'] = 1;
             }
          }
